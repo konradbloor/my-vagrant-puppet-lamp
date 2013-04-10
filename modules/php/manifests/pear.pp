@@ -33,13 +33,4 @@ class php::pear {
     require => [File["/tmp/pear/temp"], Exec["pear config-set auto_discover 1"]]
   }
 
-  # clear cache before install phpunit
-  exec { "pear clear-cache":
-    require => [Exec["pear channel-discover pear.phpunit.de; true"], Exec["pear channel-discover pear.symfony-project.com; true"], Exec["pear channel-discover components.ez.no; true"]]
-  }
-
-  # install phpunit
-  exec { "pear install -a -f phpunit/PHPUnit":
-    require => Exec["pear clear-cache"]
-  }
 }

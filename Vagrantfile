@@ -1,5 +1,7 @@
 Vagrant::Config.run do |config|
 
+  config.vm.provision :shell, :path => "puppet-bootstrap.sh"
+
   # Enable the Puppet provisioner, with will look in manifests
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
@@ -8,10 +10,11 @@ Vagrant::Config.run do |config|
   end
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "squeeze32"
+  config.vm.box = "lucid32"
     # (everything else is commented)
     # ...
 
   # Forward guest port 80 to host port 8888 and name mapping
   config.vm.forward_port 80, 8888
+
 end

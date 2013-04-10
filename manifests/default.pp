@@ -5,9 +5,11 @@ Exec {
 
 include bootstrap 
 include other
+include ntp
+include sshd
 include apache
 include php
 include php::pear
-include php::pecl
 include mysql
+
 
